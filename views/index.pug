@@ -1,5 +1,283 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Quantum Dashboard
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' rel='stylesheet')
+  link(rel="stylesheet", href="/stylesheets/style.css")
+  script(src='https://cdn.jsdelivr.net/npm/apexcharts')
+#notification-container
+.dashboard
+  nav.sidebar
+    .logo
+      .logo-icon
+        i.fas.fa-cube
+      span Quantum
+    ul.nav-links
+      li.active(data-section='dashboard' data-content='dashboard-content')
+        i.fas.fa-home
+        span Dashboard
+        .nav-indicator
+      li(data-section='analytics' data-content='analytics-content')
+        i.fas.fa-chart-line
+        span Analytics
+        .nav-indicator
+      li(data-section='projects' data-content='projects-content')
+        i.fas.fa-project-diagram
+        span Projects
+        .nav-indicator
+      li(data-section='messages' data-content='messages-content')
+        i.fas.fa-envelope
+        span Messages
+        .nav-indicator
+        span.badge 5
+      li(data-section='settings' data-content='settings-content')
+        i.fas.fa-cog
+        span Settings
+        .nav-indicator
+  main.main-content
+    header
+      .header-left
+        .search-bar
+          i.fas.fa-search
+          input(type='text' placeholder='Search anything...')
+      .header-right
+        .notifications
+          .notification-trigger
+            i.fas.fa-bell
+            span.notification-badge 3
+          .notifications-dropdown
+            .notifications-header
+              .header-left
+                h3.notifications-title Notifications
+                span.mark-all Mark all read
+              button.settings-btn
+                i.fas.fa-cog
+                |                                     Settings
+            .filter-pills
+              span.filter-pill.active All
+              span.filter-pill Unread
+              span.filter-pill Important
+            .notification-list
+            .dropdown-footer
+              button.filter-button
+                i.fas.fa-clock
+                | Last 7 days
+              button.filter-button
+                i.fas.fa-filter
+                | Filter
+              a.view-all(href='#') View All
+        .profile
+          .profile-trigger
+            .profile-avatar
+              span.avatar-text JD
+            .profile-info
+              span.profile-name John Doe
+              span.profile-role Administrator
+            i.fas.fa-chevron-down
+          .profile-dropdown
+            .dropdown-header
+              .header-avatar
+                span.avatar-text JD
+              .header-info
+                h4 John Doe
+                span john.doe@example.com
+            .dropdown-divider
+            ul.dropdown-menu
+              li
+                i.fas.fa-user
+                span My Profile
+              li
+                i.fas.fa-cog
+                span Settings
+              li
+                i.fas.fa-palette
+                span Theme
+                label.theme-switch
+                  input#theme-toggle(type='checkbox')
+                  span.switch-slider
+              li
+                i.fas.fa-bell
+                span Notifications
+            .dropdown-divider
+            ul.dropdown-menu
+              li.logout
+                i.fas.fa-sign-out-alt
+                span Logout
+    #dashboard-content.content-section.active
+      .dashboard-grid
+        .stats-container
+          .stat-card.glow
+            .stat-icon
+              i.fas.fa-users
+            .stat-details
+              h3 Total Users
+              p.counter(data-target='15423') 0
+              span.trend.positive +12.5%
+          .stat-card.glow
+            .stat-icon
+              i.fas.fa-chart-line
+            .stat-details
+              h3 Revenue
+              p.counter(data-target='84591') 0
+              span.trend.positive +8.2%
+          .stat-card.glow
+            .stat-icon
+              i.fas.fa-shopping-cart
+            .stat-details
+              h3 Sales
+              p.counter(data-target='24895') 0
+              span.trend.negative -2.4%
+          .stat-card.glow
+            .stat-icon
+              i.fas.fa-ticket-alt
+            .stat-details
+              h3 Tickets
+              p.counter(data-target='1287') 0
+              span.trend.positive +5.7%
+        .charts-container
+          .chart-card.glow
+            .revenue-header
+              h2 Revenue Analytics
+              select.revenue-filter
+                option(value='1') Last 24 Hours
+                option(value='7' selected='') Last 7 Days
+                option(value='30') Last 30 Days
+                option(value='90') Last 90 Days
+                option(value='365') Last Year
+            #revenueChart
+          .chart-card.glow
+            .chart-header
+              h3 User Activity
+              .chart-actions
+                .legend
+                  span.legend-item
+                    span.dot.new
+                    |  New Users
+                  span.legend-item
+                    span.dot.returning
+                    |  Returning
+            #userActivityChart
+        .activity-card.glow
+          .activity-header
+            h2 Recent Activity
+            button.filter-button
+              i.fas.fa-filter
+              |                                 Filter
+          #activityList.activity-list
+    #analytics-content.content-section
+      .section-header
+        h2 Analytics Overview
+        p Track your business performance and growth
+      .analytics-grid
+        .analytics-card
+          #salesTrendChart
+        .analytics-card
+          #conversionChart
+        .analytics-metrics
+          .metric-card
+            i.fas.fa-users
+            .metric-info
+              h3 Total Users
+              span.counter(data-target='15423') 0
+              p.trend.positive
+                | +12.5% 
+                span vs last month
+          .metric-card
+            i.fas.fa-shopping-cart
+            .metric-info
+              h3 Sales
+              span.counter(data-target='8745') 0
+              p.trend.positive
+                | +8.2% 
+                span vs last month
+          .metric-card
+            i.fas.fa-chart-line
+            .metric-info
+              h3 Revenue
+              span.counter(data-target='452680') $0
+              p.trend.positive
+                | +15.8% 
+                span vs last month
+    #projects-content.content-section
+      .section-header
+        h2 Project Management
+        p Track and manage your ongoing projects
+      .projects-grid
+        .project-card
+          .project-header
+            h3 Website Redesign
+            span.status.in-progress In Progress
+          p Modernizing the company website with new features and improved UI/UX
+          .project-meta
+            .team-members
+              img(src='https://ui-avatars.com/api/?name=John+Doe&background=6d5acd&color=fff' alt='Team Member')
+              img(src='https://ui-avatars.com/api/?name=Jane+Smith&background=4361ee&color=fff' alt='Team Member')
+              img(src='https://ui-avatars.com/api/?name=Mike+Johnson&background=2ed573&color=fff' alt='Team Member')
+            .project-progress
+              .progress-bar
+                .progress(style='width: 75%')
+              span 75%
+        .project-card
+          .project-header
+            h3 Mobile App Development
+            span.status.pending Pending
+          p Creating a new mobile application for customer engagement
+          .project-meta
+            .team-members
+              img(src='https://ui-avatars.com/api/?name=Sarah+Wilson&background=ffa502&color=fff' alt='Team Member')
+              img(src='https://ui-avatars.com/api/?name=Tom+Brown&background=ff4757&color=fff' alt='Team Member')
+            .project-progress
+              .progress-bar
+                .progress(style='width: 30%')
+              span 30%
+    #messages-content.content-section
+      .section-header
+        h2 Messages
+        p Your communications hub
+      .messages-container
+        .message-list
+          .message-item.unread
+            img(src='https://ui-avatars.com/api/?name=Sarah+Wilson&background=ffa502&color=fff' alt='Sarah Wilson')
+            .message-content
+              .message-header
+                h4 Sarah Wilson
+                span 2 hours ago
+              p
+                | Hey, I&apos;ve completed the initial designs for the new project. Would love your feedback!
+          .message-item
+            img(src='https://ui-avatars.com/api/?name=Mike+Johnson&background=2ed573&color=fff' alt='Mike Johnson')
+            .message-content
+              .message-header
+                h4 Mike Johnson
+                span 5 hours ago
+              p The latest deployment was successful. All systems are running smoothly.
+    #settings-content.content-section
+      .section-header
+        h2 Settings
+        p Customize your dashboard experience
+      .settings-grid
+        .settings-card
+          h3 Theme Preferences
+          .setting-option
+            span Dark Mode
+            label.switch
+              input#theme-toggle(type='checkbox' checked='')
+              span.slider
+          .setting-option
+            span Compact View
+            label.switch
+              input(type='checkbox')
+              span.slider
+        .settings-card
+          h3 Notifications
+          .setting-option
+            span Email Notifications
+            label.switch
+              input(type='checkbox' checked='')
+              span.slider
+          .setting-option
+            span Push Notifications
+            label.switch
+              input(type='checkbox' checked='')
+              span.slider
+  script(src="/javascripts/dashboard.js") 

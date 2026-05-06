@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('login', { title: 'Login | Admin' });
 });
 
+router.get('/dashboard', function(req, res, next) {
+  res.render('index', { title: 'Quantum Dashboard' });
+});
+
+
 module.exports = router;
