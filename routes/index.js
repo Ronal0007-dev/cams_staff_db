@@ -7,8 +7,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/dashboard', function(req, res, next) {
-  res.render('index', { title: 'Quantum Dashboard' });
+  res.render('index', { title: 'Dashboard | Admin' });
 });
 
+router.get('/staff', function(req, res, next) {
+  res.render('staff/staff', { title: 'Staff | Admin' });
+});
+
+router.get('/department', function(req, res, next) {
+  res.render('staff/department', { title: 'Department | Admin' });
+});
 
 module.exports = router;

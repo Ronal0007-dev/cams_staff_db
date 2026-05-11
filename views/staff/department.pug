@@ -16,7 +16,7 @@ head
         i.fas.fa-cube
       span CAMS STAFF DB
     ul.nav-links
-      li.active(data-section='dashboard' data-content='dashboard-content' onclick="window.location.href='/'")
+      li(data-section='dashboard' data-content='dashboard-content' onclick="window.location.href='/dashboard'")
         i.fas.fa-home
         span Dashboard
         .nav-indicator
@@ -28,7 +28,7 @@ head
         i.fas.fa-users
         span Staff
         .nav-indicator
-      li(data-section='department' data-content='department-content' onclick="window.location.href='/department'")
+      li.active(data-section='department' data-content='department-content' onclick="window.location.href='/department'")
           i.fas.fa-cog
           span Department
           .nav-indicator
@@ -39,31 +39,6 @@ head
           i.fas.fa-search
           input(type='text' placeholder='Search anything...')
       .header-right
-        //- .notifications
-          .notification-trigger
-            i.fas.fa-bell
-            span.notification-badge 3
-          .notifications-dropdown
-            .notifications-header
-              .header-left
-                h3.notifications-title Notifications
-                span.mark-all Mark all read
-              button.settings-btn
-                i.fas.fa-cog
-                |                                     Settings
-            .filter-pills
-              span.filter-pill.active All
-              span.filter-pill Unread
-              span.filter-pill Important
-            .notification-list
-            .dropdown-footer
-              button.filter-button
-                i.fas.fa-clock
-                | Last 7 days
-              button.filter-button
-                i.fas.fa-filter
-                | Filter
-              a.view-all(href='#') View All
         .profile
           .profile-trigger
             .profile-avatar
@@ -117,8 +92,6 @@ head
 
       block content 
   script(src="https://code.jquery.com/jquery-3.7.1.js")
-  script(src='/javascripts/js/bootstrap.min.js')
-  script(src="/javascripts/js/bootstrap.js") 
   script(src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js")
   script(src="/javascripts/datatables.js")
   script(src="/javascripts/datatables.min.js")

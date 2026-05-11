@@ -16,7 +16,7 @@ head
         i.fas.fa-cube
       span CAMS STAFF DB
     ul.nav-links
-      li.active(data-section='dashboard' data-content='dashboard-content' onclick="window.location.href='/'")
+      li(data-section='dashboard' data-content='dashboard-content' onclick="window.location.href='/'")
         i.fas.fa-home
         span Dashboard
         .nav-indicator
@@ -24,7 +24,7 @@ head
       //-   i.fas.fa-chart-line
       //-   span Analytics
       //-   .nav-indicator
-      li(data-section='staff' data-content='staff-content' onclick="window.location.href='/staff'")
+      li.active(data-section='staff' data-content='staff-content' onclick="window.location.href='/staff'")
         i.fas.fa-users
         span Staff
         .nav-indicator
@@ -39,31 +39,7 @@ head
           i.fas.fa-search
           input(type='text' placeholder='Search anything...')
       .header-right
-        //- .notifications
-          .notification-trigger
-            i.fas.fa-bell
-            span.notification-badge 3
-          .notifications-dropdown
-            .notifications-header
-              .header-left
-                h3.notifications-title Notifications
-                span.mark-all Mark all read
-              button.settings-btn
-                i.fas.fa-cog
-                |                                     Settings
-            .filter-pills
-              span.filter-pill.active All
-              span.filter-pill Unread
-              span.filter-pill Important
-            .notification-list
-            .dropdown-footer
-              button.filter-button
-                i.fas.fa-clock
-                | Last 7 days
-              button.filter-button
-                i.fas.fa-filter
-                | Filter
-              a.view-all(href='#') View All
+        
         .profile
           .profile-trigger
             .profile-avatar
@@ -114,7 +90,7 @@ head
               h3 Experties
               p.counter(data-target='1287') 0
               //span.trend.positive +5.7%
-
+      button.btn.btn-primary(onclick="window.location.href='/staff/add'") Add New Staff
       block content 
   script(src="https://code.jquery.com/jquery-3.7.1.js")
   script(src='/javascripts/js/bootstrap.min.js')

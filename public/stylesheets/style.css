@@ -1,9 +1,9 @@
 :root {
-    --bg-primary: #0a0b0e;
-    --bg-secondary: #12141a;
-    --bg-tertiary: #1a1d25;
-    --text-primary: #ffffff;
-    --text-secondary: #a0a3bd;
+    --bg-primary: #f4f6fa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #edf0f7;
+    --text-primary: #1a1d25;
+    --text-secondary: #64676d;
     --accent-primary: #6d5acd;
     --accent-secondary: #4361ee;
     --danger: #ff4757;
